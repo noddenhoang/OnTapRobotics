@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Robotics</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app">
+    <div id="question-list" class="hidden">
+      <h1>Danh sách câu hỏi</h1>
+      <ul id="questions"></ul>
+    </div>
+    <div id="quiz" class="hidden">
+      <h1 id="question-title"></h1>
+      <textarea id="answer-input" placeholder="Nhập câu trả lời của bạn..."></textarea>
+      <button id="submit-btn">Submit</button>
+      <div id="result" class="hidden">
+        <h2>Đáp án:</h2>
+        <div id="answer-display"></div>
+        <button id="continue-btn">Làm tiếp</button>
+        <button id="back-btn">Quay lại</button>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
