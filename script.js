@@ -1,23 +1,17 @@
+const apiUrl = "https://script.google.com/macros/s/AKfycbzVrdaBGAlLcCcBYChadL60FHJkk9NvheazcdFIgncgDJPcKdi3GOPHMpipDmYHQsJn/exec"; // URL API của bạn
+
 let data = [];
 let currentQuestion = null;
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Đọc URL API từ file api_url.txt
-  fetch("api_url.txt")
-    .then(response => response.text())
-    .then(apiUrl => {
-      // Gọi API với URL đã đọc được
-      fetch(apiUrl.trim()) // Dùng trim() để loại bỏ khoảng trắng
-        .then(response => response.json())
-        .then(json => {
-          data = json;
-          showQuestionList();
-        })
-        .catch(err => console.error("Error fetching API data:", err));
+  fetch(apiUrl)
+    .then(response => response.json())
+    .then(json => {
+      data = json;
+      showQuestionList();
     })
-    .catch(err => console.error("Error reading API URL file:", err));
+    .catch(err => console.error("Error fetching data:", err));
 });
-
 
 function showQuestionList() {
   document.getElementById("question-list").classList.remove("hidden");
