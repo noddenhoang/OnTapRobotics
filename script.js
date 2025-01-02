@@ -43,10 +43,19 @@ document.getElementById("submit-btn").addEventListener("click", () => {
   resultDiv.classList.remove("hidden");
 
   const answerDisplay = document.getElementById("answer-display");
-  answerDisplay.innerHTML = currentQuestion.dap_an.replace(/\\n/g, '<br>');
+  if (currentQuestion.dap_an.startsWith("http")) {
+    answerDisplay.innerHTML = `<a href="${currentQuestion.dap_an}" target="_blank">Click here to view the answer</a>`;
+  } else {
+    answerDisplay.innerHTML = currentQuestion.dap_an.replace(/\\n/g, '<br>');
+  }
 });
 
 document.getElementById("continue-btn").addEventListener("click", () => {
+  let nextIndex = (data.indexOf(currentQuestion) + 1) % data.length;
+  startQuiz(nextIndex);
+});
+
+document.getElementById("random-btn").addEventListener("click", () => {
   let randomIndex;
   do {
     randomIndex = Math.floor(Math.random() * data.length);
